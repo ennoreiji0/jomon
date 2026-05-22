@@ -7,9 +7,10 @@ export default function Home(){
   const router=useRouter()
   return (
     <div>
+      <NormalButton>ニュース</NormalButton>
       <NormalButton
-        onClick={()=>{router.push('/home')}}
-      >ログイン</NormalButton>
+        onClick={()=>{router.push('/rain')}}
+      >RAIN</NormalButton>
     </div>
   )
 }
