@@ -1,37 +1,29 @@
 {
-  "opening": {
-    "npc_talk": "繋がった……！お願い助けて！電気が止まって街がおかしいの。でもネットの知識があれば余裕だし、私、自分で文明を再建してみせるわ！",
+  "start": {
+    "npc_messages": [
+      { "user_id": "npc_kanzaki", "username": "神崎", "content": "繋がった……！お願い助けて！" }
+    ],
     "choices": [
-      {
-        "text": "💬 「落ち着け。まずは飲料水の確保だ」",
-        "next_stage": "water_route"
-      },
-      {
-        "text": "💬 「文明を舐めるな。お前、今どこにいる？」",
-        "next_stage": "angry_route"
-      }
+      { "text": "「落ち着け。まずは飲料水の確保だ」", "next": "water_route" }
     ]
   },
   "water_route": {
-    "npc_talk": "水？そんなの水道の蛇口から……って、出ない！？うそ、なんで！？じゃあ近くの川の水を汲んで飲めばいいよね？",
+    "npc_messages": [
+      { "user_id": "npc_kanzaki", "username": "神崎", "content": "わかった、お水ね……！キッチン探してくる！" },
+      { "user_id": "system", "username": "システム", "content": "神崎が移動を開始しました。" },
+      { "user_id": "npc_unknown", "username": "???", "content": "……おい、そこに誰かいるのか？" }
+    ],
     "choices": [
-      {
-        "text": "💬 「そのまま飲むな。寄生虫で死ぬぞ。ろ過器を作れ」",
-        "next_stage": "filtration_clear"
-      },
-      {
-        "text": "💬 「お前みたいなバカは一回腹を壊せ」",
-        "next_stage": "water_badend"
-      }
+      
+      { "text": "「誰だお前は」", "next": "who_are_you" }
     ]
   },
-  "angry_route": {
-    "npc_talk": "なによその言い方！私は今、自宅の部屋よ。外は真っ暗で怖いから一歩も出たくないの！何か文句ある！？",
+  "who_are_you": {
+    "npc_messages": [
+      { "user_id": "npc_unknown", "username": "???", "content": "俺か？俺は通りすがりの生存者だ。神崎って女を探してる。" }
+    ],
     "choices": [
-      {
-        "text": "💬 「部屋のブレーカーを確認しろ」",
-        "next_stage": "breaker_route"
-      }
+      { "text": "「味方か？敵か？」", "next": "next_route" }
     ]
   }
 }
