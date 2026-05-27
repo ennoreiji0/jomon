@@ -3,13 +3,11 @@
 export default function Fukidashi({
   content,
   username,
-  postUserId
 }: {
   content: string;
   username: string | null | undefined;
-  postUserId: string
 }) {
-  const isMe = 'player' === postUserId;
+  const isMe = 'player' === username;
   const hasUsername = username && username.trim() !== "";
 
   return (

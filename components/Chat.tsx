@@ -15,7 +15,6 @@ export default function Chat({
         key={data.id}
         content={data.content}
         username={data.username}
-        postUserId={data.user_id}
       />
     ))
   )

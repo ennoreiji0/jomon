@@ -1,29 +1,166 @@
 {
   "start": {
     "npc_messages": [
-      { "user_id": "npc_kanzaki", "username": "神崎", "content": "繋がった……！お願い助けて！" }
+      {
+        "username": "神崎",
+        "content": "ええ！本当に過去につながった！"
+      },
+      {
+        "username": "神崎",
+        "content": "すごい……！"
+      }
     ],
     "choices": [
-      { "text": "「落ち着け。まずは飲料水の確保だ」", "next": "water_route" }
+      {
+        "text": "あなたは誰？",
+        "next": "start2"
+      }
+    ]
+  },
+  "start2": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "私は20年後の未来の日本にいるんだ"
+      },
+      {
+        "username": "神崎",
+        "content": "あのね、実は、日本が10日後から縄文時代に戻ることになったの"
+      },
+      {
+        "username": "神崎",
+        "content": "どうしよう……"
+      }
+    ],
+    "choices": [
+      {
+        "text": "落ち着いて。まずは飲料水の確保！",
+        "next": "water_route"
+      },
+      {
+        "text": "ええ！？マジ？やばいじゃん！きっともう無理だよ！",
+        "next": "awateru"
+      }
     ]
   },
   "water_route": {
     "npc_messages": [
-      { "user_id": "npc_kanzaki", "username": "神崎", "content": "わかった、お水ね……！キッチン探してくる！" },
-      { "user_id": "system", "username": "システム", "content": "神崎が移動を開始しました。" },
-      { "user_id": "npc_unknown", "username": "???", "content": "……おい、そこに誰かいるのか？" }
+      {
+        "username": "神崎",
+        "content": "わかった、水ね！"
+      },
+      {
+        "username": "神崎",
+        "content": "って、あれ？"
+      },
+      {
+        "username": "神崎",
+        "content": "水道水がでないよ……なんで？"
+      }
     ],
     "choices": [
-      
-      { "text": "「誰だお前は」", "next": "who_are_you" }
+      {
+        "text": "ええ！どどどうしよう",
+        "next": "awateru"
+      },
+      {
+        "text": "お金の価値がなくなったからじゃないかな",
+        "next": "kahei_zero"
+      },
+      {
+        "text": "きっとゾンビパニックになったんだよ",
+        "next": "awateru"
+      }
     ]
   },
-  "who_are_you": {
+  "kahei_zero": {
     "npc_messages": [
-      { "user_id": "npc_unknown", "username": "???", "content": "俺か？俺は通りすがりの生存者だ。神崎って女を探してる。" }
+      {
+        "username": "神崎",
+        "content": "そ、そんな"
+      },
+      {
+        "username": "神崎",
+        "content": "私、どうすればいいの？"
+      }
     ],
     "choices": [
-      { "text": "「味方か？敵か？」", "next": "next_route" }
+      {
+        "text": "さあ？",
+        "next": "awateru"
+      },
+      {
+        "text": "現状を整理しよう",
+        "next": "genjou_seiri"
+      }
     ]
+  },
+  "genjou_seiri": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "わかった"
+      },
+      {
+        "username": "神崎",
+        "content": "私は神崎 調(かんざき しらべ)。高校2年生だよ"
+      }
+    ],
+    "choices": [
+      {
+        "text": "縄文だからもう高校はないけどねww",
+        "next": "kuzu"
+      },
+      {
+        "text": "よろしくね。私のことはAって呼んで",
+        "next": "joukyou"
+      }
+    ]
+  },
+  "awateru": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "どどどうしよう"
+      },
+      {
+        "username": "神崎",
+        "content": "あばばば"
+      },
+      {
+        "username": "神崎",
+        "content": "もういいや"
+      },
+      {
+        "username": "神崎",
+        "content": "全部諦めよう"
+      },
+      {
+        "username": "システム",
+        "content": "Bad End..."
+      }
+    ],
+    "choices": []
+  },
+  "kuzu": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "ひどい"
+      },
+      {
+        "username": "神崎",
+        "content": "もういいよ"
+      },
+      {
+        "username": "神崎",
+        "content": "さよなら"
+      },
+      {
+        "username": "システム",
+        "content": "Bad End..."
+      }
+    ],
+    "choices": []
   }
 }

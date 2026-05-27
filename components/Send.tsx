@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import NormalButton from "./NormalButton"
+import { send } from "process";
 
 // 🌟 Propsの型定義を、新しいJSONの構造（オブジェクトの配列）に書き換える
 interface SendProps {
@@ -23,13 +24,15 @@ export default function Send({sendOK, choicesData, handleSend }: SendProps){
       
       {/* 1. 入力欄エリア */}
       <div className="p-4 flex gap-2 items-center">
-        <button
+        <input
           disabled={!sendOK}
           className="flex-1 p-3 rounded-xl bg-blue-400 text-white text-sm outline-none cursor-pointer border border-slate-700 focus:border-teal-500 caret-transparent"
                          
           onClick={() => setIsOpen(!isOpen)}
-          
-        >{message}</button>
+          value={message}
+          readOnly
+          placeholder={sendOK?"タップして入力":"返信を待っています..."}
+        />
 
         <NormalButton
           onClick={() => {

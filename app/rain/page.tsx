@@ -7,7 +7,7 @@ import scenarioData from "@/lib/scenario.json";
 
 type ScenarioType = {
   [key: string]: {
-    npc_messages: { user_id: string; username: string; content: string }[];
+    npc_messages: { username: string; content: string }[];
     choices: { text: string; next: string }[];
   }
 };
@@ -20,15 +20,60 @@ export default function Home(){
   const scrollEndRef = useRef<HTMLDivElement>(null);
   const [sendOK, setSendOK] = useState<boolean>(true);
 
-  // 初期メッセージのセット
+  const hasLaunched = useRef(false);
+
+  // 【新設】指定したシーンのNPCメッセージを時間差でチャットに追加する共通関数
+  const triggerSceneMessages = (targetScene: string, isInitial: boolean = false) => {
+    // もしターゲットのシーンデータやセリフがなければ即終了
+    if (!targetScene || !scenario[targetScene] || !scenario[targetScene].npc_messages.length) {
+      setCurrentScene(targetScene);
+      setSendOK(true);
+      return;
+    }
+
+    const messagesToAdd = scenario[targetScene].npc_messages;
+
+    const addMessageWithDelay = (index: number) => {
+      // すべてのメッセージを出し終えたら、シーンを確定させてロック解除
+      if (index >= messagesToAdd.length) {
+        setCurrentScene(targetScene);
+        setSendOK(true); 
+        return;
+      }
+
+      // 1.5秒遅らせてメッセージを1件ずつ追加
+      setTimeout(() => {
+        setChat((prev) => {
+          const currentChat = prev ?? [];
+          const nextId = currentChat.length + 1;
+          
+          const currentMsg = messagesToAdd[index];
+          const npcMsg: ChatInfo = {
+            id: nextId,
+            username: currentMsg.username,
+            content: currentMsg.content
+          };
+
+          return [...currentChat, npcMsg];
+        });
+
+        // 再帰的に次のメッセージへ
+        addMessageWithDelay(index + 1);
+      }, isInitial && index === 0 ? 500 : 1500); // 🌟最初の1件目だけ、ゲーム起動時は少し早め(0.5秒)に喋らせる演出だ
+    };
+
+    // タイマー起動
+    addMessageWithDelay(0);
+  };
+
+// 開幕の処理：startシーンのメッセージをじわじわ出す
   useEffect(() => {
-    const startMessages = scenario["start"].npc_messages.map((msg, index) => ({
-      id: index + 1,
-      user_id: msg.user_id,
-      username: msg.username,
-      content: msg.content,
-    }));
-    setChat(startMessages);
+    // 🌟【修正】もしすでに実行済みなら、2回目は何もしないで無視する
+    if (hasLaunched.current) return;
+    hasLaunched.current = true; // 1回目が走ったらフラグを立てる
+
+    setSendOK(false); // 演出中は入力をロック
+    triggerSceneMessages("start", true);
   }, []);
 
   // 自動スクロール
@@ -48,7 +93,6 @@ export default function Home(){
       
       const playerMsg: ChatInfo = {
         id: nextId,
-        user_id: 'player',
         username: 'player',
         content: playerContent
       };
@@ -56,48 +100,8 @@ export default function Home(){
       return [...currentChat, playerMsg];
     });
 
-    // シナリオデータがない、またはメッセージが空ならここで終了
-    if (!nextScene || !scenario[nextScene] || !scenario[nextScene].npc_messages.length) {
-      setCurrentScene(nextScene);
-      setSendOK(true); // 次のメッセージがないならロック解除
-      return;
-    }
-
-    // 2. 次のシーンのNPCメッセージを1個ずつ時間差で追加していく
-    const messagesToAdd = scenario[nextScene].npc_messages;
-    
-    const addMessageWithDelay = (index: number) => {
-      // すべてのメッセージを出し終えたら、シーンを更新してロック解除！
-      if (index >= messagesToAdd.length) {
-        setCurrentScene(nextScene);
-        setSendOK(true); // 🌟ここで解除するのが正解
-        return;
-      }
-
-      // 1.5秒遅らせてからメッセージをチャットに追加
-      setTimeout(() => {
-        setChat((prev) => {
-          const currentChat = prev ?? [];
-          const nextId = currentChat.length + 1;
-          
-          const currentMsg = messagesToAdd[index];
-          const npcMsg: ChatInfo = {
-            id: nextId,
-            user_id: currentMsg.user_id,
-            username: currentMsg.username,
-            content: currentMsg.content
-          };
-
-          return [...currentChat, npcMsg];
-        });
-
-        // 次のメッセージへ
-        addMessageWithDelay(index + 1);
-      }, 1500);
-    };
-
-    // 最初のタイマーを起動
-    addMessageWithDelay(0);
+    // 2. 次のシーンのメッセージを時間差で起動
+    triggerSceneMessages(nextScene);
   };
 
   const currentChoices = scenario[currentScene]?.choices ?? [];
@@ -114,4 +118,4 @@ export default function Home(){
       </footer>
     </div>
   );
-} // 🌟余分だった } を1つ削除したぞ
+}
