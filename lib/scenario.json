@@ -112,8 +112,120 @@
         "next": "kuzu"
       },
       {
-        "text": "よろしくね。私のことはAって呼んで",
+        "text": "よろしく。私のことはAって呼んで",
         "next": "joukyou"
+      }
+    ]
+  },
+  "joukyou": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "うん"
+      },
+      {
+        "username": "神崎",
+        "content": "ほかに何か知りたいことはある？"
+      }
+    ],
+    "choices": [
+      {
+        "text": "なんで縄文時代に戻ることになったの？",
+        "next": "why_jomon"
+      },
+      {
+        "text": "今、どういうところにいるの？",
+        "next": "where_is_she"
+      },
+      {
+        "text": "もう知りたいことはないよ",
+        "next": "thats_all_1"
+      }
+    ]
+  },
+  "why_jomon": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "国民投票で決まっちゃったんだ"
+      },
+      {
+        "username": "神崎",
+        "content": "ジョーモン弥生っていうYoutuberが、縄文時代のほうが幸福度が高いとか言い出して……"
+      },
+      {
+        "username": "神崎",
+        "content": "みんながそれに賛成して、憲法の「健康で文化的な最低限度の生活＝縄文時代」ってことになっちゃったんだ"
+      }
+    ],
+    "choices": [
+      {
+        "text": "神崎は反対に投票したの？",
+        "next": "why_jomon_1"
+      },
+      {
+        "text": "神崎は投票できなかったんだね……",
+        "next": "joukyou"
+      }
+    ]
+  },
+  "why_jomon_1": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "いや、私はまだ16歳だから投票できなかったんだ"
+      }
+    ],
+    "choices": [
+      {
+        "text": "そっかぁ",
+        "next": "joukyou"
+      }
+    ]
+  },
+  "where_is_she": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "今は、街中にいるよ"
+      },
+      {
+        "username": "神崎",
+        "content": "住宅街"
+      }
+    ],
+    "choices": [
+      {
+        "text": "了解",
+        "next": "joukyou"
+      }
+    ]
+  },
+  "thats_all_1": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "ちょっと落ち着いたよ。ありがとう",
+        "next": "what_do_we_do_1"
+      }
+    ],
+    "choices": []
+  },
+  "what_do_we_do_1": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "じゃあ、このあとどうしよう？"
+      }
+    ],
+    "choices": [
+      {
+        "text": "魔法でなんとかしよう",
+        "next": "what_do_we_do_1"
+      },
+      {
+        "text": "飲み水をつくろうか",
+        "next": "what_do_we_do_1"
       }
     ]
   },

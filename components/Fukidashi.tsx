@@ -15,7 +15,7 @@ export default function Fukidashi({
       <div className={`flex ${isMe ? 'justify-end' : 'justify-start'} mb-1`}>
         <div className="flex flex-col max-w-[75%]">
           {!isMe && hasUsername && (
-            <span className="text-[10px] text-slate-100 ml-1 leading-none mb-0.5">
+            <span className="text-sm text-slate-800 ml-1 leading-none mb-0.5">
               {username}
             </span>
           )}
@@ -26,7 +26,7 @@ export default function Fukidashi({
               ? 'bg-green-600 text-white' 
               : 'bg-white text-black border border-gray-200'}
           `}>
-            <p className="m-0 p-0 text-sm leading-normal">
+            <p className="m-0 p-0 leading-normal text-xl">
               {content.trim()}
             </p>
           </div>

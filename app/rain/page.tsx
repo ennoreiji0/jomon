@@ -7,7 +7,7 @@ import scenarioData from "@/lib/scenario.json";
 
 type ScenarioType = {
   [key: string]: {
-    npc_messages: { username: string; content: string }[];
+    npc_messages: { username: string; content: string; next?:string }[];
     choices: { text: string; next: string }[];
   }
 };
@@ -102,6 +102,10 @@ export default function Home(){
 
     // 2. 次のシーンのメッセージを時間差で起動
     triggerSceneMessages(nextScene);
+    const memo=scenario[nextScene].npc_messages[scenario[nextScene].npc_messages.length-1].next
+    if(memo){
+      triggerSceneMessages(memo);
+    }
   };
 
   const currentChoices = scenario[currentScene]?.choices ?? [];
