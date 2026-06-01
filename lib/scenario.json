@@ -316,11 +316,25 @@
     "choices": [
       {
         "text": "まずは漏電遮断機をOFFにしてから、止水栓を閉じてね。逃し弁のレバーを手前に起こして、非常用取水栓を開いて！",
-        "next": "kyutouki"
+        "next": "dekita1"
+      }
+    ]
+  },
+  "dekita1": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "できたー！水をきれいなバケツにためたよ！"
+      }
+    ],
+    "choices": [
+      {
+        "text": "ナイス！",
+        "next": "dekita1"
       },
       {
-        "text": "",
-        "next": "kyutouki"
+        "text": "よかった……",
+        "next": "dekita1"
       }
     ]
   },
