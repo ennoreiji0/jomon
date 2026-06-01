@@ -3,7 +3,7 @@
     "npc_messages": [
       {
         "username": "神崎",
-        "content": "ええ！？本当に過去につながった！"
+        "content": "ええ！本当に過去につながった！"
       },
       {
         "username": "神崎",
@@ -64,7 +64,7 @@
         "next": "awateru"
       },
       {
-        "text": "お金の価値がなくなったからじゃないかな",
+        "text": "ほかの人たちが水を使いまくったせいかも",
         "next": "kahei_zero"
       },
       {
@@ -191,7 +191,7 @@
       },
       {
         "username": "神崎",
-        "content": "住宅街"
+        "content": "住宅街にある一軒家に住んでる"
       }
     ],
     "choices": [
@@ -221,10 +221,123 @@
     "choices": [
       {
         "text": "魔法でなんとかしよう",
-        "next": "what_do_we_do_1"
+        "next": "fuzakeruna1"
       },
       {
-        "text": "飲み水をつくろうか",
+        "text": "飲み水をつくろう",
+        "next": "nomimizu"
+      }
+    ]
+  },
+  "nomimizu": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "どうやって飲み水をつくるの？川は近くにあるけど、雨は降ってないし……"
+      }
+    ],
+    "choices": [
+      {
+        "text": "川の水をそのまま飲んでいいよ",
+        "next": "kawanomizu"
+      },
+      {
+        "text": "家に水槽ってある？",
+        "next": "suisou_nai"
+      },
+      {
+        "text": "給湯器から取水しよう",
+        "next": "kyutouki"
+      }
+    ]
+  },
+  "suisou_nai": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "水槽？うーん、ないよ。ごめん",
+        "next": "nomimizu"
+      }
+    ],
+    "choices": []
+  },
+  "kawanomizu": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "え？本当に？"
+      },
+      {
+        "username": "神崎",
+        "content": "……わかった。信じるよ"
+      },
+      {
+        "username": "神崎",
+        "content": "……"
+      },
+      {
+        "username": "神崎",
+        "content": "……"
+      },
+      {
+        "username": "神崎",
+        "content": "飲んできたよ"
+      },
+      {
+        "username": "神崎",
+        "content": "……"
+      },
+      {
+        "username": "神崎",
+        "content": "……"
+      },
+      {
+        "username": "神崎",
+        "content": "……"
+      },
+      {
+        "username": "神崎",
+        "content": "うわあああ！おなか痛いよおおお"
+      },
+      {
+        "username": "システム",
+        "content": "Bad End..."
+      }
+    ],
+    "choices": []
+  },
+  "kyutouki": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "給湯器？あ、あったよ！"
+      }
+    ],
+    "choices": [
+      {
+        "text": "まずは漏電遮断機をOFFにしてから、止水栓を閉じてね。逃し弁のレバーを手前に起こして、非常用取水栓を開いて！",
+        "next": "kyutouki"
+      },
+      {
+        "text": "",
+        "next": "kyutouki"
+      }
+    ]
+  },
+  "fuzakeruna1": {
+    "npc_messages": [
+      {
+        "username": "神崎",
+        "content": "ふざけないで"
+      },
+      {
+        "username": "神崎",
+        "content": "まじめに考えてよ！"
+      }
+    ],
+    "choices": [
+      {
+        "text": "ごめん",
         "next": "what_do_we_do_1"
       }
     ]
